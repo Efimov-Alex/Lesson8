@@ -97,8 +97,11 @@ public class MainActivity extends AppCompatActivity implements DrivingSession.Dr
         submitRequest();
 
 
-        PlacemarkMapObject marker = mapView.getMap().getMapObjects().addPlacemark(new
-                Point(55.7935, 37.7012), ImageProvider.fromResource(this, R.drawable.ic_launcher_background));
+        PlacemarkMapObject marker = mapView.getMap().getMapObjects().addPlacemark(
+                new Point(55.7935, 37.7012),
+                ImageProvider.fromResource(this, R.drawable.ic_action_name));
+
+      //  PlacemarkMapObject marker = mapView.getMap().getMapObjects().addPlacemark(new Point(55.7935, 37.7012));
 
         marker.addTapListener(new MapObjectTapListener() {
             @Override
@@ -109,12 +112,6 @@ public class MainActivity extends AppCompatActivity implements DrivingSession.Dr
                 return false;
             }
         });
-
-        Point mappoint= new Point(55.7935, 37.7012);
-
-
-
-      //  mapView.getMap().getMapObjects().addPlacemark(mappoint);
 
     }
     @Override
