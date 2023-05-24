@@ -10,6 +10,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.yandex.mapkit.MapKitFactory;
@@ -42,6 +43,8 @@ import java.util.List;
 import ru.mirea.efimovar.yandexdriver.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity implements DrivingSession.DrivingRouteListener{
+
+    private static final String TAG = "myLogs";
     final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
     private ActivityMainBinding binding;
     private final String MAPKIT_API_KEY = "926ea80a-9223-4b2c-acb3-3ad5e763ad79";
@@ -97,11 +100,9 @@ public class MainActivity extends AppCompatActivity implements DrivingSession.Dr
         submitRequest();
 
 
-        PlacemarkMapObject marker = mapView.getMap().getMapObjects().addPlacemark(
-                new Point(55.7935, 37.7012),
-                ImageProvider.fromResource(this, R.drawable.ic_action_name));
+      //  PlacemarkMapObject marker = mapView.getMap().getMapObjects().addPlacemark(new Point(55.7935, 37.7012), ImageProvider.fromResource(this, R.drawable.ic_action_name));
 
-      //  PlacemarkMapObject marker = mapView.getMap().getMapObjects().addPlacemark(new Point(55.7935, 37.7012));
+        PlacemarkMapObject marker = mapView.getMap().getMapObjects().addPlacemark(new Point(55.7935, 37.7012));
 
         marker.addTapListener(new MapObjectTapListener() {
             @Override
@@ -109,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements DrivingSession.Dr
                     point) {
                 Toast.makeText(getApplication(),"РТУ МИРЭА корпус на стромынке",
                         Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "Нажатие");
                 return false;
             }
         });
